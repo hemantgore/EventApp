@@ -11,7 +11,7 @@ import CoreData
 
 struct EventCellViewModel {
     let date = Date()
-    private static let imageCache = NSCache<NSString, UIImage>()
+    static let imageCache = NSCache<NSString, UIImage>()
     private var cacheKey: String {
         event.objectID.description
     }

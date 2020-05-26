@@ -107,5 +107,35 @@
             </objects>
             <point key="canvasLocation" x="1696" y="138"/>
         </scene>
+        <!--Edit Event View Controller-->
+        <scene sceneID="HIH-Fq-7Qz">
+            <objects>
+                <viewController storyboardIdentifier="EditEventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wcZ-a7-TRl" customClass="EditEventViewController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Enq-vo-awA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZdN-lg-Xsh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GxN-Sr-7vh" firstAttribute="trailing" secondItem="ZdN-lg-Xsh" secondAttribute="trailing" id="A8k-8v-wgc"/>
+                            <constraint firstItem="ZdN-lg-Xsh" firstAttribute="leading" secondItem="GxN-Sr-7vh" secondAttribute="leading" id="bHA-Tr-37e"/>
+                            <constraint firstItem="ZdN-lg-Xsh" firstAttribute="top" secondItem="GxN-Sr-7vh" secondAttribute="top" id="hFO-Tg-ap0"/>
+                            <constraint firstItem="GxN-Sr-7vh" firstAttribute="bottom" secondItem="ZdN-lg-Xsh" secondAttribute="bottom" id="s6t-00-VdJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GxN-Sr-7vh"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ZdN-lg-Xsh" id="Jsn-eq-Bdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgq-wM-Eo1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2429" y="138"/>
+        </scene>
     </scenes>
 </document>
