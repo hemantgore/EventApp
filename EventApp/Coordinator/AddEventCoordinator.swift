@@ -27,7 +27,7 @@ final class AddEventCoordinator: Coordinator {
         self.modalNavigationController = UINavigationController()
 
         let addEventVC: AddEventViewController = .instantiate()
-        let viewModel = AddEventViewModel(cellBuilder: EventCellBuilder(), coreDataManager: CoreDataManager.shared)
+        let viewModel = AddEventViewModel(cellBuilder: EventCellBuilder(), eventService: EventService())
         viewModel.coordinator = self
         addEventVC.viewModel = viewModel
 

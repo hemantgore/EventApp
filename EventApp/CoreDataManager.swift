@@ -26,15 +26,7 @@ final class CoreDataManager {
         persistentContainer.viewContext
     }
 
-    func saveEvent(name: String, date: Date, image: UIImage) {
-        let event = Event(context: moc)
-        event.setValue(name, forKey: "name")
-
-        let resizedImage = image.sameAspectRation(newHeight: 250)
-        let imageData = resizedImage.jpegData(compressionQuality: 0.5)
-        event.setValue(imageData, forKey: "image")
-        event.setValue(date, forKey: "date")
-
+    func save() {
         do {
             try moc.save()
         } catch {
@@ -42,38 +34,23 @@ final class CoreDataManager {
         }
     }
 
-    func updateEvent(event: Event, name: String, date: Date, image: UIImage) {
-        event.setValue(name, forKey: "name")
-
-        let resizedImage = image.sameAspectRation(newHeight: 250)
-        let imageData = resizedImage.jpegData(compressionQuality: 0.5)
-        event.setValue(imageData, forKey: "image")
-        event.setValue(date, forKey: "date")
-
+    func get<T: NSManagedObject>(_ id: NSManagedObjectID) -> T? {
         do {
-            try moc.save()
+            return try moc.existingObject(with: id) as? T
         } catch {
             print(error)
         }
+        return nil
     }
 
-    func fetchEvents() -> [Event] {
+    func getAll<T: NSManagedObject>() -> [T] {
         do {
-            let fetchReq = NSFetchRequest<Event>(entityName: "Event")
-            let events = try moc.fetch(fetchReq)
-            return events
+            let fetchReq = NSFetchRequest<T>(entityName: "\(T.self)")
+            return try moc.fetch(fetchReq)
         } catch {
             print(error)
             return []
         }
     }
 
-    func getEvent(_ id: NSManagedObjectID) -> Event? {
-        do {
-            return try moc.existingObject(with: id) as? Event
-        } catch {
-            print(error)
-        }
-        return nil
-    }
 }

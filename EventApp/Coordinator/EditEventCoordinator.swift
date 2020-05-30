@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+protocol EventUpdatingCoordinator {
+    func onUpdateEvent()
+}
+
+extension EventUpdatingCoordinator {
+    func onUpdateEvent() {}
+}
+
 final class EditEventCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
 
@@ -28,7 +36,7 @@ final class EditEventCoordinator: Coordinator {
     func start() {
 
         let editEventVC: EditEventViewController = .instantiate()
-        let viewModel = EditEventViewModel(event: event, cellBuilder: EventCellBuilder(), coreDataManager: CoreDataManager.shared)
+        let viewModel = EditEventViewModel(event: event, cellBuilder: EventCellBuilder())
         viewModel.coordinator = self
         editEventVC.viewModel = viewModel
         navigationController.pushViewController(editEventVC, animated: true)

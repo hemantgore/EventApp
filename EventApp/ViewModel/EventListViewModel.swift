@@ -16,9 +16,9 @@ final class EventListViewModel {
         case event(EventCellViewModel)
     }
 
-    private var coreDataManager: CoreDataManager
-    init(coreDataManager: CoreDataManager = CoreDataManager.shared) {
-        self.coreDataManager = coreDataManager
+    private var eventService: EventServiceProtocol
+    init(eventService: EventServiceProtocol = EventService()) {
+        self.eventService = eventService
     }
     private(set) var cells: [Cell] = []
 
@@ -28,7 +28,7 @@ final class EventListViewModel {
 
     func reload() {
         EventCellViewModel.imageCache.removeAllObjects()
-        let events = coreDataManager.fetchEvents()
+        let events = eventService.getEvents()
 
         cells = events.map {
             var eventCellViewModel = EventCellViewModel($0)

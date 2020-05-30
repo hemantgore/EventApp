@@ -21,7 +21,7 @@ final class EventListCoordinator: Coordinator {
 
     func start() {
         let eventListVC : EventListViewController = .instantiate()
-        let eventListVM = EventListViewModel(coreDataManager: CoreDataManager.shared)
+        let eventListVM = EventListViewModel()
         eventListVM.coordinator = self
         onUpdateEvent = eventListVM.reload
         eventListVC.viewModel = eventListVM
